@@ -17,20 +17,20 @@ app.whenReady().then(() => {
 		hasShadow: false,
 		frame: false,
 		resizable: false,
-		alwaysOnTop: true,
+		// alwaysOnTop: true,
 		minimizable: false,
-		maximizable: true,
-		kiosk: true,
+		// maximizable: true,
+		// kiosk: true,
 		webPreferences: {
 			nodeIntegration: true,
 			contextIsolation: false
 		},
 	})
 
-	mainWin.setVisibleOnAllWorkspaces(true, {
-		visibleOnFullScreen: true,
-		skipTransformProcessType: true,
-	});
+	// mainWin.setVisibleOnAllWorkspaces(true, {
+	// 	visibleOnFullScreen: true,
+	// 	skipTransformProcessType: true,
+	// });
 
 	mainWin.loadFile('Site/index.html');
 
@@ -38,13 +38,13 @@ app.whenReady().then(() => {
 
 	mainWin.setMenuBarVisibility(false)
 
-	setTimeout(() => {
-		mainWin.maximize();
-	}, 2000);
+	// setTimeout(() => {
+	// 	mainWin.maximize();
+	// }, 2000);
 
-	setTimeout(() => {
-		mainWin.setFullScreen(true);
-	}, 3000);
+	// setTimeout(() => {
+	// 	mainWin.setFullScreen(true);
+	// }, 3000);
 })
 
 server.post('/', function(request, response){

@@ -45,19 +45,19 @@
         </h3>
 
         <div class="animation">
-            <video id="speedometr">
-                <source src="video.webm" type='video/webm'>
+            <video muted id="speedometrVideo">
+                <source id="speedometrSrc" src="../Assets/Animations/3.webm" type='video/webm'>
             </video>
         </div>
 
-        <div class="resultVideo">
-            <video id="video">
-                <source src="video.webm" type='video/webm'>
+        <div id="resultVideo" class="resultVideo">
+            <video muted id="video">
+                <source id="videoSrc" type='video/mp4'>
             </video>
         </div>
 
         <div id="smallSendButton" onclick="SendClick();"></div>
-        <div id="smallRepeatlButton" onclick=""></div>
+        <div id="smallRepeatlButton" onclick="RepeatClick();"></div>
         <div id="smallCancelButtonY" onclick="GoMenuClick();"></div>
     </div>
 
