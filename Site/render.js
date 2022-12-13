@@ -1,3 +1,5 @@
+const { ipcRenderer } = require('electron');
+
 // pages
 startPage = document.getElementById("startPage");
 scanPage = document.getElementById("scanPage");
@@ -26,9 +28,31 @@ descriptions = {
 }
 
 var scanned = true;
+var updated = true;
 var level = 100;
 var personName = "Иванов Иван";
 
+
+ipcRenderer.on('update-person', (event, arg) => {
+    personName = arg.name;
+    console.log(personName);
+
+    if (updated == false) {
+        // if has scanned faces
+        if (scanned) {
+            nameText.innerHTML = personName;
+
+            namePage.style.display = "block";
+            scanPage.style.display = "none";
+        }
+        else {
+            badPage.style.display = "block";
+            scanPage.style.display = "none";
+            // Show another page
+        }
+    }
+    updated = true;
+});
 
 function StartClick() {
     scanPage.style.display = "block";
@@ -48,22 +72,7 @@ function GoMenuClick() {
 }
 
 function ScanClick() {
-    // Do something
-
-    // Add scan functionality
-
-    // if has scanned faces
-    if (scanned) {
-        nameText.innerHTML = personName;
-
-        namePage.style.display = "block";
-        scanPage.style.display = "none";
-    }
-    else {
-        badPage.style.display = "block";
-        scanPage.style.display = "none";
-        // Show another page
-    }
+    updated = false;
 }
 
 function GoToResult() {

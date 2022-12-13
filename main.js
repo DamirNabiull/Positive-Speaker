@@ -1,5 +1,12 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const electron = require('electron')
+const express = require('express');
+
+var mainWin;
+var args = null;
+var server = express();
+server.use(express.json());
+
 
 app.whenReady().then(() => {
 	// MAIN WIN
@@ -39,3 +46,12 @@ app.whenReady().then(() => {
 		mainWin.setFullScreen(true);
 	}, 3000);
 })
+
+server.post('/', function(request, response){
+    console.log(request.body);
+    args = request.body;
+    mainWin.webContents.send('update-person', args);
+    response.send(request.body);
+});
+
+server.listen(3000);
