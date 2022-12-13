@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Positive</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="page" id="startPage">
+        <div class="bigButton" id="startButton" onclick="StartClick();"></div>
+    </div>
+
+    <div class="page" id="scanPage">
+        <iframe class="stream" src="http://127.0.0.1:8081/" frameborder="0" allowfullscreen></iframe>
+        
+        <div id="scanFade"></div>
+        <div id="scanBox"></div>
+
+        <div id="smallScanButton" onclick="ScanClick();"></div>
+        <div id="smallCancelButton" onclick="GoMenuClick();"></div>
+    </div>
+
+    <div class="page" id="namePage">
+        <p id="nameText">Ваше имя и фамилия</p>
+
+        <div class="bigButton" id="correctButton" onclick="GoToResult();"></div>
+        <div class="bigButton" id="incorrectButton" onclick="StartClick();"></div>
+
+        <div class="cancelButton" onclick="GoMenuClick();" style="top: 2374px;"></div>
+    </div>
+
+    <div class="page" id="badPage">
+        <div class="bigButton" id="backButton" onclick="StartClick();"></div>
+    </div>
+
+    <div class="page" id="resultPage">
+        <h3 class="resultText" id="resultTitle">Поздравляем!
+            <br>Вы — король информационных джунглей
+        </h3>
+        <h3 class="resultText" id="resultDescription">Вы как настоящий король — любите славу.
+            <br>Попали в топовые СМИ, а главные события
+            <br>в мире ИБ не обошлись без вас
+        </h3>
+
+        <div class="animation">
+            <video id="speedometr">
+                <source src="video.webm" type='video/webm'>
+            </video>
+        </div>
+
+        <div class="resultVideo">
+            <video id="video">
+                <source src="video.webm" type='video/webm'>
+            </video>
+        </div>
+
+        <div id="smallSendButton" onclick="SendClick();"></div>
+        <div id="smallRepeatlButton" onclick=""></div>
+        <div id="smallCancelButtonY" onclick="GoMenuClick();"></div>
+    </div>
+
+    <div class="page" id="sendedPage">
+        <div class="bigButton" id="endButton" onclick="GoMenuClick();"></div>
+    </div>
+
+    <script type="text/javascript" src="render.js"></script>
+</body>
+
+</html>

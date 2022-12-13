@@ -1,0 +1,336 @@
+@font-face {
+    font-family: "RF Dewi Extended";
+    src: url("../Assets/Fonts/RFDewiExtended-Bold.ttf") format("truetype");
+}
+
+/* * {
+    top: 0;
+    left: 0;
+    overflow-y: hidden;
+    overflow-x: hidden;
+} */
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.page {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2160px;
+    height: 3840px;
+}
+
+.bigButton {
+    position: absolute;
+    left: 592px;
+    width: 980px;
+    height: 280px;
+}
+
+.cancelButton {
+    position: absolute;
+    left: 895px;
+    width: 370px;
+    height: 274.23px;
+    background-image: url("../Assets/cancelButton.png");
+    background-size: initial;
+}
+
+
+/* START PAGE */
+
+#startPage {
+    background-image: url("../Assets/startPage.svg");
+    background-size: initial;
+    z-index: 10;
+    display: block;
+}
+
+#startButton {
+    top: 2220px;
+    background-image: url("../Assets/startButton.png");
+    background-size: initial;
+}
+
+
+/* SCAN PAGE */
+
+#scanPage {
+    display: none;
+    z-index: 9;
+}
+
+#scanText {
+    position: absolute;
+
+    width: 2160px;
+    height: 288px;
+    left: 0px;
+    top: 0px;
+
+    font-family: 'RF Dewi Extended';
+    font-style: normal;
+    font-size: 70px;
+    line-height: 96px;
+
+    display: flex;
+    align-items:center;
+    justify-content:center;
+    text-align: center;
+    letter-spacing: 0.03em;
+
+    color: #ECECEC;
+}
+
+#scanBox {
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 897px;
+    height: 1805px;
+    left: 632px;
+    top: 763px;
+
+    border: 10px solid #E3F254;
+}
+
+#scanFade {
+    position: absolute;
+    width: 2160px;
+    height: 3840px;
+    left: 0px;
+    top: 0px;
+
+    background-image: url("../Assets/scanFade.png");
+}
+
+#smallScanButton {
+    position: absolute;
+    width: 337px;
+    height: 185px;
+    left: 1563px;
+    top: 1129px;
+    background-image: url("../Assets/scanSmall.png");
+}
+
+#smallCancelButton {
+    position: absolute;
+    width: 289px;
+    height: 182px;
+    left: 1587px;
+    top: 2028px;
+    background-image: url("../Assets/cancelSmall.png");
+}
+
+/* .cameraImage {
+    position: absolute;
+    left: 298px;
+    top: 118px;
+    width: 683.08px;
+    height: 464px;
+} */
+
+.stream {
+    position: absolute;
+    left: 1080px;
+    top: 1920px;
+    width: 2160px;
+    height: 3840px;
+    background-color: #666666;
+    -webkit-transform: scale(2);
+    -moz-transform: scale(2);
+}
+
+.videoWrap {
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 1280px;
+    height: 700px;
+    left: 440px;
+    top: 1156px;
+
+    background: #ffffff00;
+    border: 10px solid #E3F254;
+}
+
+
+/* NAME PAGE */
+
+#namePage {
+    background-image: url("../Assets/namePage.svg");
+    background-size: initial;
+    display: none;
+    z-index: 8;
+}
+
+#nameText {
+    position: absolute;
+
+    width: 2160px;
+    height: 108px;
+    left: 0px;
+    top: 926px;
+
+    font-family: 'RF Dewi Extended';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 90px;
+    line-height: 108px;
+
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    text-align: center;
+    letter-spacing: 0.03em;
+
+    color: #ECECEC;
+}
+
+#correctButton {
+    top: 1550px;
+    background-image: url("../Assets/correctButton.png");
+    background-size: initial;
+}
+
+#incorrectButton {
+    top: 1987px;
+    background-image: url("../Assets/incorrectButton.png");
+    background-size: initial;
+}
+
+
+
+/* BAD PAGE */
+
+#badPage {
+    background-image: url("../Assets/badPage.svg");
+    background-size: initial;
+    display: none;
+    z-index: 8;
+}
+
+
+#backButton{
+    top: 1987px;
+    background-image: url("../Assets/backButton.png");
+    background-size: initial;
+}
+
+
+
+/* RESULT PAGE */
+
+#resultPage {
+    background-image: url("../Assets/resultPage.svg");
+    background-size: initial;
+    display: none;
+    z-index: 7;
+}
+
+.resultText {
+    position: absolute;
+    width: 2160px;
+    left: 0px;
+
+    font-family: 'RF Dewi Extended';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    vertical-align: top;
+    letter-spacing: 0.03em;
+
+    color: #ECECEC;
+}
+
+#resultTitle {
+    top: 942px;
+    height: 144px;
+}
+
+#resultDescription {
+    top: 1149px;
+    height: 216px;
+}
+
+#smallSendButton {
+    position: absolute;
+    width: 337px;
+    height: 182px;
+    left: 1605px;
+    top: 1642px;
+    background-image: url("../Assets/sendSmall.png");
+}
+
+#smallRepeatlButton {
+    position: absolute;
+    width: 289px;
+    height: 182px;
+    left: 1629px;
+    top: 2066px;
+    background-image: url("../Assets/repeatSmall.png");
+}
+
+#smallCancelButtonY {
+    position: absolute;
+    width: 289px;
+    height: 182px;
+    left: 1629px;
+    top: 2490px;
+    background-image: url("../Assets/cancellSmall_2.png");
+}
+
+.animation {
+    position: absolute;
+    width: 411.38px;
+    height: 277.53px;
+    left: 874px;
+    top: 628px;
+}
+
+#speedometr {
+    width: 411.38px;
+    height: 277.53px;
+    left: 0px;
+    top: 0px;
+    background-color: #E3F254;
+}
+
+.resultVideo {
+    position: absolute;
+    width: 1280px;
+    height: 1280px;
+    left: 302px;
+    top: 1512px;
+}
+
+#video {
+    width: 1280px;
+    height: 1280px;
+    left: 0px;
+    top: 0px;
+    background-color: #666666;
+}
+
+
+/* SENDED PAGE */
+
+#sendedPage {
+    background-image: url("../Assets/sendedPage.svg");
+    background-size: initial;
+    display: none;
+    z-index: 6;
+}
+
+#endButton {
+    top: 1987px;
+    background-image: url("../Assets/endButton.png");
+    background-size: initial;
+}
