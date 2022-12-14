@@ -88,8 +88,8 @@ async function get_data(matched_card) {
 
 	console.log(response);
 
-	// var data = await response.json()
-	// return data;
+	var data = await response.json()
+	return data;
 }
 
 const setCameraEnabled = async (token, active) => {
