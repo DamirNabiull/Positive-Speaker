@@ -82,7 +82,7 @@ async function get_data(matched_card) {
 	var response = await fetch(`${FF_SERVER}/cards/humans/${matched_card}`, {
 		method: "GET",
 		headers: {
-			'Authorization': `Basic ${token}`
+			Authorization: `Token ${token}`
 		}
 	});
 
