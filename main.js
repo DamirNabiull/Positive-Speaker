@@ -8,7 +8,7 @@ var args = null;
 var server = express();
 server.use(express.json());
 
-var response = await fetch(`http://127.0.0.1/auth/login/`, {
+var response = fetch(`http://127.0.0.1/auth/login/`, {
     method: "POST",
     headers: {
 		'Content-Type': 'application/json',
@@ -19,7 +19,7 @@ var response = await fetch(`http://127.0.0.1/auth/login/`, {
     body: JSON.stringify({ uuid: "u" })
 });
 
-var data = await response.json();
+var data = response.json();
 console.log(data);
 const token = data.token;
 console.log(token);
