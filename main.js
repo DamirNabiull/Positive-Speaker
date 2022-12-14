@@ -11,6 +11,7 @@ var mainWin;
 var args = null;
 var server = express();
 var token;
+var updated = true;
 server.use(express.json());
 
 async function get_token() {
@@ -78,7 +79,7 @@ app.whenReady().then(() => {
 })
 
 async function get_data(matched_card) {
-	var response = await fetch(`${IP}/api/cards/${matched_card}`, {
+	var response = await fetch(`${FF_SERVER}/cards/humans/${matched_card}`, {
 		method: "GET",
 		headers: {
 			'Authorization': `Basic ${token}`
@@ -93,6 +94,10 @@ async function get_data(matched_card) {
 
 const setCameraEnabled = async (token, active) => {
 	console.log('setCameraEnabled', active);
+
+	if (active) {
+		updated = false;
+	}
 
 	let camera = await fetch(`${FF_SERVER}/cameras/${CAMERA_ID}`, {
 		method: "PATCH",
@@ -109,7 +114,13 @@ const setCameraEnabled = async (token, active) => {
 setCameraEnabled(token, false);
 
 server.post('/', function(request, response){
-	setCameraEnabled(token, false);
+	if (updated == false) {
+		setCameraEnabled(token, false);
+		updated = true;
+	}
+	else{
+		response.send(request.body);
+	}
     // console.log(request.body);
 
 	var name = 'None';
