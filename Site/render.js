@@ -64,6 +64,7 @@ var email = "email@email.com";
 var personVideo = personName.replaceAll(' ', '_');
 var videoLink = "link";
 var videoEnded = true;
+var scanTimer;
 
 const emailText = `<p>Дорогой спикер!
                     <br><br>
@@ -93,7 +94,9 @@ ipcRenderer.on('update-person', (event, arg) => {
 
     if (updated == false) {
         // if has scanned faces
-        if (scanned) {
+        // if (scanned) {
+            clearTimeout(scanTimer);
+
             nameText.innerHTML = personName;
             speedometrSrc.src = `../Assets/Animations/${level}.webm`;
             speedometrVideo.load();
@@ -103,12 +106,14 @@ ipcRenderer.on('update-person', (event, arg) => {
 
             namePage.style.display = "block";
             scanPage.style.display = "none";
-        }
-        else {
-            badPage.style.display = "block";
-            scanPage.style.display = "none";
-            // Show another page
-        }
+            
+            ipcRenderer.send('set-camera', {"value": false});
+        // }
+        // else {
+        //     badPage.style.display = "block";
+        //     scanPage.style.display = "none";
+        //     // Show another page
+        // }
     }
     updated = true;
 });
@@ -173,7 +178,15 @@ function GoMenuClick() {
 function ScanClick() {
     if (updated == true) {
         updated = false;
+        ipcRenderer.send('set-camera', {"value": true});
     }
+
+    scanTimer = setTimeout(function () {
+        badPage.style.display = "block";
+        scanPage.style.display = "none";
+        updated = true;
+        ipcRenderer.send('set-camera', {"value": false});
+    }, 5000);
 }
 
 function GoToResult() {

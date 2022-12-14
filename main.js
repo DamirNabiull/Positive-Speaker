@@ -3,13 +3,17 @@ const electron = require('electron')
 const express = require('express');
 const fetch = require('node-fetch')
 
+const FF_SERVER = "http://localhost:80";
+const CAMERA_ID = 1;
+
 var mainWin;
 var args = null;
 var server = express();
+var token;
 server.use(express.json());
 
 async function get_token() {
-	const response = await fetch(`http://127.0.0.1/auth/login/`, {
+	var response = await fetch(`${FF_SERVER}/auth/login/`, {
 		method: "POST",
 		headers: {
 			'Content-Type': 'application/json',
@@ -20,10 +24,8 @@ async function get_token() {
 		body: JSON.stringify({ uuid: "u" })
 	});
 
-	const data = await response.json()
-	console.log(data);
-	const token = data.token;
-	console.log(token);
+	var data = await response.json()
+	token = data.token;
 }
 
 get_token();
@@ -66,14 +68,69 @@ app.whenReady().then(() => {
 	// setTimeout(() => {
 	// 	mainWin.setFullScreen(true);
 	// }, 3000);
+
+	
+
+	ipcMain.on('set-camera', (event, arg) => {
+		setCameraEnabled(token, arg.value);
+	});
 })
+
+async function get_data(matched_card) {
+	var response = await fetch(`${FF_SERVER}/api/cards/${matched_card}`, {
+		method: "GET",
+		headers: {
+			'Authorization': `Basic ${token}`
+		}
+	});
+
+	var data = await response.json()
+	return data;
+}
+
+const setCameraEnabled = async (token, active) => {
+	console.log('setCameraEnabled', active);
+
+	let camera = await fetch(`${FF_SERVER}/cameras/${CAMERA_ID}`, {
+		method: "PATCH",
+		headers: {
+		"Content-Type": "application/json",
+		Authorization: `Token ${token}`,
+		},
+		body: JSON.stringify({
+		active,
+		}),
+	}).then((res) => res.json());
+};
+
+setCameraEnabled(token, false);
 
 server.post('/', function(request, response){
     console.log(request.body);
 
+	var name = 'None';
+	var email = 'None';
+	var level = 'None';
 
+	for (var event in request.body){
+		if (event.matched == true && event.matched_card != undefined) {
+			var data = get_data(event.matched_card);
 
-    args = request.body;
+			name = data.name;
+			email = data.email;
+			level = data.level;
+
+			break;
+		}
+	}
+
+    // args = request.body;
+	args = {
+		"name": name,
+		"email": email,
+		"level": level
+	}
+
     mainWin.webContents.send('update-person', args);
     response.send(request.body);
 });
