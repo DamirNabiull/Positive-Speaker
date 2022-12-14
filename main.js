@@ -106,15 +106,22 @@ const setCameraEnabled = async (token, active) => {
 setCameraEnabled(token, false);
 
 server.post('/', function(request, response){
-    console.log(request.body);
+    // console.log(request.body);
 
 	var name = 'None';
 	var email = 'None';
 	var level = 'None';
 
+	setCameraEnabled(token, false);
+
 	for (var event in request.body){
 		if (event.matched == true && event.matched_card != undefined) {
 			var data = get_data(event.matched_card);
+
+			console.log('EVENT');
+			console.log(event);
+			console.log('DATA');
+			console.log(data);
 
 			name = data.name;
 			email = data.email;

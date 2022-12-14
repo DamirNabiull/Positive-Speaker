@@ -106,8 +106,8 @@ ipcRenderer.on('update-person', (event, arg) => {
 
             namePage.style.display = "block";
             scanPage.style.display = "none";
-            
-            ipcRenderer.send('set-camera', {"value": false});
+
+            // ipcRenderer.send('set-camera', {"value": false});
         // }
         // else {
         //     badPage.style.display = "block";
