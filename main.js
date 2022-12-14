@@ -86,9 +86,12 @@ async function get_data(matched_card) {
 		}
 	});
 
-	console.log(response);
+	// console.log(response);
 
 	var data = await response.json()
+
+	// console.log(data);
+
 	return data;
 }
 
@@ -133,14 +136,17 @@ server.post('/', function(request, response){
 		if (event.matched == true && event.matched_card != undefined) {
 			var data = get_data(event.matched_card);
 
-			// console.log('EVENT');
-			// console.log(event);
-			// console.log('DATA');
-			// console.log(data);
+			console.log("DATA");
+			сonsole.log(data);
+
+			comment = data.comment;
+
+			console.log("COMMENT");
+			console.log(comment);
 
 			name = data.name;
-			email = data.email;
-			level = data.level;
+			email = comment.email;
+			level = comment.status;
 
 			break;
 		}
