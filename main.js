@@ -8,19 +8,20 @@ var args = null;
 var server = express();
 server.use(express.json());
 
-fetch(`http://127.0.0.1/auth/login/`, {
+const response = await fetch(`http://127.0.0.1/auth/login/`, {
     method: "POST",
     headers: {
 		'Content-Type': 'application/json',
-		'Authorization': `Basic ${Buffer.from('admin:admin').toString(
+      	'Authorization': `Basic ${Buffer.from('admin:admin').toString(
 			"base64"
 		)}`,
     },
     body: JSON.stringify({ uuid: "u" })
-}).then((res) => res.json());
+});
 
-console.log(res);
-const token = res.token;
+const data = await response.json()
+console.log(data);
+const token = data.token;
 console.log(token);
 
 
