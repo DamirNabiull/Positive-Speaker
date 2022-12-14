@@ -4,6 +4,7 @@ const express = require('express');
 const fetch = require('node-fetch')
 
 const FF_SERVER = "http://localhost:80";
+const IP = "http://http://192.168.1.48:80"
 const CAMERA_ID = 1;
 
 var mainWin;
@@ -77,7 +78,7 @@ app.whenReady().then(() => {
 })
 
 async function get_data(matched_card) {
-	var response = await fetch(`${FF_SERVER}/api/cards/${matched_card}`, {
+	var response = await fetch(`${IP}/api/cards/${matched_card}`, {
 		method: "GET",
 		headers: {
 			'Authorization': `Basic ${token}`
@@ -120,10 +121,10 @@ server.post('/', function(request, response){
 		if (event.matched == true && event.matched_card != undefined) {
 			var data = get_data(event.matched_card);
 
-			console.log('EVENT');
-			console.log(event);
-			console.log('DATA');
-			console.log(data);
+			// console.log('EVENT');
+			// console.log(event);
+			// console.log('DATA');
+			// console.log(data);
 
 			name = data.name;
 			email = data.email;
