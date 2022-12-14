@@ -84,8 +84,10 @@ async function get_data(matched_card) {
 		}
 	});
 
-	var data = await response.json()
-	return data;
+	console.log(response);
+
+	// var data = await response.json()
+	// return data;
 }
 
 const setCameraEnabled = async (token, active) => {
@@ -106,15 +108,15 @@ const setCameraEnabled = async (token, active) => {
 setCameraEnabled(token, false);
 
 server.post('/', function(request, response){
+	setCameraEnabled(token, false);
     // console.log(request.body);
 
 	var name = 'None';
 	var email = 'None';
 	var level = 'None';
 
-	setCameraEnabled(token, false);
-
-	for (var event in request.body){
+	for (var event of request.body){
+		// console.log(event)
 		if (event.matched == true && event.matched_card != undefined) {
 			var data = get_data(event.matched_card);
 
