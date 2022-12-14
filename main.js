@@ -114,14 +114,14 @@ const setCameraEnabled = async (token, active) => {
 setCameraEnabled(token, false);
 
 server.post('/', function(request, response){
-	if (updated == false) {
+	// if (updated == false) {
 		setCameraEnabled(token, false);
-		updated = true;
-	}
-	else{
-		response.send(request.body);
-		return;
-	}
+	// 	updated = true;
+	// }
+	// else{
+	// 	response.send(request.body);
+	// 	return;
+	// }
     // console.log(request.body);
 
 	var name = 'None';
