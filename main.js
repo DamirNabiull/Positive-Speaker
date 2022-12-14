@@ -102,8 +102,8 @@ const setCameraEnabled = async (token, active) => {
 	let camera = await fetch(`${FF_SERVER}/cameras/${CAMERA_ID}`, {
 		method: "PATCH",
 		headers: {
-		"Content-Type": "application/json",
-		Authorization: `Token ${token}`,
+			"Content-Type": "application/json",
+			Authorization: `Token ${token}`,
 		},
 		body: JSON.stringify({
 		active,
@@ -120,6 +120,7 @@ server.post('/', function(request, response){
 	}
 	else{
 		response.send(request.body);
+		return;
 	}
     // console.log(request.body);
 
