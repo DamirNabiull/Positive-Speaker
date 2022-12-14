@@ -1,11 +1,28 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const electron = require('electron')
 const express = require('express');
+const fetch = require('node-fetch')
 
 var mainWin;
 var args = null;
 var server = express();
 server.use(express.json());
+
+var response = await fetch(`http://127.0.0.1/auth/login/`, {
+    method: "POST",
+    headers: {
+		'Content-Type': 'application/json',
+      	'Authorization': `Basic ${Buffer.from('admin:admin').toString(
+			"base64"
+		)}`,
+    },
+    body: JSON.stringify({ uuid: "u" })
+});
+
+var data = await response.json();
+console.log(data);
+const token = data.token;
+console.log(token);
 
 
 app.whenReady().then(() => {
@@ -49,6 +66,9 @@ app.whenReady().then(() => {
 
 server.post('/', function(request, response){
     console.log(request.body);
+
+
+
     args = request.body;
     mainWin.webContents.send('update-person', args);
     response.send(request.body);
