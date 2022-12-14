@@ -4,7 +4,7 @@ const express = require('express');
 const fetch = require('node-fetch')
 
 const FF_SERVER = "http://localhost:80";
-const IP = "http://http://192.168.1.48:80"
+const IP = "http://192.168.1.48:80"
 const CAMERA_ID = 1;
 
 var mainWin;
