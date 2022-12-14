@@ -90,7 +90,7 @@ async function get_data(matched_card) {
 
 	var data = await response.json()
 
-	console.log(data);
+	// console.log(data);
 
 	return data;
 }
@@ -136,13 +136,13 @@ server.post('/', function(request, response){
 		if (event.matched == true && event.matched_card != undefined) {
 			var data = get_data(event.matched_card);
 
-			console.log("DATA");
-			сonsole.log(data);
+			// console.log("DATA");
+			// сonsole.log(data);
 
 			comment = data.comment;
 
-			console.log("COMMENT");
-			console.log(comment);
+			// console.log("COMMENT");
+			// console.log(comment);
 
 			name = data.name;
 			email = comment.email;
@@ -158,6 +158,8 @@ server.post('/', function(request, response){
 		"email": email,
 		"level": level
 	}
+
+	console.log(args);
 
     mainWin.webContents.send('update-person', args);
     response.send("OK");
