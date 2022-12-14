@@ -90,7 +90,7 @@ async function get_data(matched_card) {
 
 	var data = await response.json()
 
-	// console.log(data);
+	console.log(data);
 
 	return data;
 }
