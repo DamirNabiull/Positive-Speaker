@@ -154,7 +154,7 @@ server.post('/', function(request, response){
 	}
 
     mainWin.webContents.send('update-person', args);
-    response.send(request.body);
+    response.send("OK");
 });
 
 server.listen(3000);
